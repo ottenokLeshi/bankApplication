@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div><span th:text="${client.firstName}"></span> <span th:text="${client.lastName}"></span></div>
+    <table border="1">
+        <tr>
+            <td>card id</td>
+            <td>balance</td>
+        </tr>
+        <tr th:each="account : ${accounts}">
+            <td th:text="${account.id}"></td>
+            <td th:text="${account.balance}"></td>
+        </tr>
+    </table>
+    <form action="#" th:action="@{/account}" th:object="${account}" method="POST">
+        <p th:style="'display:none'"><input type="number" th:value="${client.id}" th:id="clientId" th:name="clientId"/></p>
+        <p>Balance: <input type="number" name="balance" th:field="*{balance}"/></p>
+        <p><button type="submit">Save account</button></p>
+    </form>
+</body>
+</html>

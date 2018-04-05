@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>client id</td>
+            <td>name</td>
+        </tr>
+        <tr th:each="client : ${clients}">
+            <td th:text="${client.id}"></td>
+            <td><a th:href="@{/client/{id}(id = ${client.id})}"><span th:text="${client.firstName}"></span> <span th:text="${client.lastName}"></span></a></td>
+        </tr>
+    </table>
+
+    <form action="#" th:action="@{/client}" th:object="${client}" method="POST">
+        <p>Firstname: <input type="text" name="firstName" th:field="*{firstName}" th:required="required" /></p>
+        <p>Lastname: <input type="text" name="lastName" th:field="*{lastName}" th:required="required" /></p>
+        <p><button type="submit">Save client</button></p>
+    </form>
+</body>
+</html>
