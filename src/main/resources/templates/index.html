@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+    <div th:include="/fragments/header.html"> content here </div>
     <table border="1">
         <tr>
             <td>client id</td>
@@ -17,6 +18,7 @@
     </table>
 
     <form action="#" th:action="@{/client}" th:object="${client}" method="POST">
+        <h3>Add client</h3>
         <p>Firstname: <input type="text" name="firstName" th:field="*{firstName}" th:required="required" /></p>
         <p>Lastname: <input type="text" name="lastName" th:field="*{lastName}" th:required="required" /></p>
         <p><button type="submit">Save client</button></p>

@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+    <div th:include="/fragments/header.html"> content here </div>
     <div><span th:text="${client.firstName}"></span> <span th:text="${client.lastName}"></span></div>
     <table border="1">
         <tr>
@@ -14,11 +15,23 @@
         <tr th:each="account : ${accounts}">
             <td th:text="${account.id}"></td>
             <td th:text="${account.balance}"></td>
+            <td><a th:href="@{/transactions/{accountid}(accountid = ${account.id})}"><span>transactions</span></a></td>
+
         </tr>
     </table>
     <form action="#" th:action="@{/account}" th:object="${account}" method="POST">
+        <h3>Add account</h3>
         <p th:style="'display:none'"><input type="number" th:value="${client.id}" th:id="clientId" th:name="clientId"/></p>
         <p>Balance: <input type="number" name="balance" th:field="*{balance}"/></p>
+        <p><button type="submit">Save account</button></p>
+    </form>
+
+
+    <form action="#" th:action="@{/account/transfer}" th:object="${transaction}" method="POST">
+        <h3>Add transfer transaction</h3>
+        <p>Send from: <input type="number" th:field="*{accountId}" /></p>
+        <p>Send to: <input type="number" th:field="*{targetAccountId}" /></p>
+        <p>Summ: <input type="number" name="summ" th:field="*{summ}"/></p>
         <p><button type="submit">Save account</button></p>
     </form>
 </body>

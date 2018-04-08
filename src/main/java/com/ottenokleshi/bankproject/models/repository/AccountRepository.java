@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 public interface AccountRepository extends CrudRepository<Account, Long> {
-    @Query(value = "select * FROM account where clientid = :id", nativeQuery = true)
+    @Query(value = "select * FROM account where client_id = :id ORDER BY id", nativeQuery = true)
     Iterable<Account> findClientAccounts(@Param("id") Long id);
 }

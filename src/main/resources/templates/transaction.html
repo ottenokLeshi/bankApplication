@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div><span>User: </span><span th:text="${client?.firstName}"></span> <span th:text="${client?.lastName}"></span></div>
+    <div><span>Balance: </span><span th:text="${account?.balance}"></span></div>
+    <div><span>Account id:</span><span th:text="${account?.id}"></span></div>
+    <table border="1">
+        <tr>
+            <td>transaction id</td>
+            <td>type</td>
+            <td>account</td>
+            <td>target account</td>
+            <td>summ</td>
+            <td>time</td>
+        </tr>
+        <tr th:each="transaction : ${transactions}">
+            <td th:text="${transaction.id}"></td>
+            <td th:text="${transaction.type}"></td>
+            <td th:text="${transaction.accountId}"></td>
+            <td th:text="${transaction?.targetAccountId}"></td>
+            <td th:text="${transaction.summ}"></td>
+            <td th:text="${transaction.time}"></td>
+        </tr>
+    </table>
+</body>
+</html>

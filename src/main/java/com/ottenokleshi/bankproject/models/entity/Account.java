@@ -13,7 +13,7 @@ public class Account implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "clientid")
+    @Column(name = "client_id")
     private Long clientId;
 
     @Column(name = "balance")

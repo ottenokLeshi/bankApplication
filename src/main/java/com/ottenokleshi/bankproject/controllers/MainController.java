@@ -1,9 +1,7 @@
 package com.ottenokleshi.bankproject.controllers;
 
 import com.ottenokleshi.bankproject.models.entity.Client;
-import com.ottenokleshi.bankproject.models.repository.AccountRepository;
 import com.ottenokleshi.bankproject.models.repository.ClientRepository;
-import com.ottenokleshi.bankproject.models.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +15,10 @@ public class MainController {
 
     @Autowired
     ClientRepository clientRepository;
-    @Autowired
-    AccountRepository accountRepository;
-    @Autowired
-    TransactionRepository transactionRepository;
 
+    /**
+     * Получение начальной страницы с клиентами и формой добавления клиента
+     */
     @GetMapping("/")
     public ModelAndView index() {
         Iterable<Client> clients = clientRepository.findAll();
