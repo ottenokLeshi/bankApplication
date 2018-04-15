@@ -37,8 +37,9 @@ public class AccountController {
     /**
      * Создание перевода
      */
-    @PostMapping("/account/transfer")
-    public RedirectView addUserTransferTransaction(@ModelAttribute Transaction transaction) {
+    @PostMapping("/account/transfer/{clientId}")
+    public RedirectView addUserTransferTransaction(@ModelAttribute Transaction transaction,
+                                                   @PathVariable(name = "clientId") Long clientId) {
 
         Optional<Account> account = accountRepository.findById(transaction.getAccountId());
         Optional<Account> targetAccount = accountRepository.findById(transaction.getTargetAccountId());
@@ -52,7 +53,7 @@ public class AccountController {
         Integer balance = account.get().getBalance();
         Integer targetBalance = targetAccount.get().getBalance();
 
-        if (balance < transaction.getSumm() || account.get().getClientId() != client.getId()) {
+        if (balance < transaction.getSumm() || clientId != account.get().getClientId()) {
             //DOTO добавить редирект на ошибку
             return new RedirectView("/");
         }

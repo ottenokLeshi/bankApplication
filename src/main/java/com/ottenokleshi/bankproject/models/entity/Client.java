@@ -2,6 +2,7 @@ package com.ottenokleshi.bankproject.models.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.*;
 
 @Entity
 @Table(name = "client")
@@ -12,11 +13,14 @@ public class Client implements Serializable{
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "firstname")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastname")
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "email")
+    private String email;
 
     public Client() {
     }
@@ -44,6 +48,14 @@ public class Client implements Serializable{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

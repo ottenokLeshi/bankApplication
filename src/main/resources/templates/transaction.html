@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+    <div th:include="/fragments/header.html"> content here </div>
     <div><span>User: </span><span th:text="${client?.firstName}"></span> <span th:text="${client?.lastName}"></span></div>
     <div><span>Balance: </span><span th:text="${account?.balance}"></span></div>
     <div><span>Account id:</span><span th:text="${account?.id}"></span></div>

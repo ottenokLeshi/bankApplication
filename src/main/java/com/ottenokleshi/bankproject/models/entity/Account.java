@@ -1,6 +1,5 @@
 package com.ottenokleshi.bankproject.models.entity;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -18,6 +17,10 @@ public class Account implements Serializable {
 
     @Column(name = "balance")
     private Integer balance;
+
+
+    //@JoinColumn(foreignKey = @ForeignKey(name = "account_client_id_fkey"), nullable = false)
+    //private Client client;
 
     public Account() {
     }

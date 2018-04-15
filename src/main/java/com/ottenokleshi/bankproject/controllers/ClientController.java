@@ -22,6 +22,17 @@ public class ClientController {
     @Autowired
     ClientRepository clientRepository;
 
+
+    /**
+     * Создание клиента из формы
+     */
+    @PostMapping("/client")
+    public RedirectView postClient(@ModelAttribute Client client) {
+        clientRepository.save(client);
+
+        return new RedirectView("/");
+    }
+
     /**
      * Получение счетов клиента
      */
@@ -37,15 +48,5 @@ public class ClientController {
         map.put("transfer", TransactionType.TRANSFER);
 
         return new ModelAndView("client", map);
-    }
-
-    /**
-     * Создание клиента из формы
-     */
-    @PostMapping("/client")
-    public RedirectView postClient(@ModelAttribute Client client) {
-        clientRepository.save(client);
-
-        return new RedirectView("/");
     }
 }

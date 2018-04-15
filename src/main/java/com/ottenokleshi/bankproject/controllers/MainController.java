@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 public class MainController {
@@ -21,9 +22,12 @@ public class MainController {
      */
     @GetMapping("/")
     public ModelAndView index() {
-        Iterable<Client> clients = clientRepository.findAll();
+        Optional<Iterable<Client>> clients = Optional.of(clientRepository.findAll());
         Map<String, Object> map = new HashMap<>();
-        map.put("clients", clients);
+        if (clients.isPresent()) {
+            map.put("clients", clients.get());
+        }
+
         map.put("client", new Client());
 
         return new ModelAndView("index", map);
