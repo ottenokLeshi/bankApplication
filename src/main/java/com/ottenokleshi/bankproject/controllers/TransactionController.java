@@ -3,18 +3,15 @@ package com.ottenokleshi.bankproject.controllers;
 import com.ottenokleshi.bankproject.models.entity.Account;
 import com.ottenokleshi.bankproject.models.entity.Client;
 import com.ottenokleshi.bankproject.models.entity.Transaction;
-import com.ottenokleshi.bankproject.models.entity.TransactionType;
 import com.ottenokleshi.bankproject.models.repository.AccountRepository;
 import com.ottenokleshi.bankproject.models.repository.ClientRepository;
 import com.ottenokleshi.bankproject.models.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 @RestController
 public class TransactionController {

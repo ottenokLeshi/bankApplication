@@ -11,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -64,7 +62,7 @@ public class AccountController {
         accountRepository.save(account.get());
         accountRepository.save(targetAccount.get());
         transaction.setType(TransactionType.TRANSFER);
-        transaction.setTime(new Date(new Date().getTime()));
+        transaction.setTime(new Timestamp(new Date().getTime()));
         transactionRepository.save(transaction);
 
         return new RedirectView("/client/" + client.getId());

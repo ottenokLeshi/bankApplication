@@ -3,8 +3,7 @@ package com.ottenokleshi.bankproject.models.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -29,7 +28,7 @@ public class Transaction implements Serializable {
     private Integer summ;
 
     @Column(name = "time")
-    private Date time;
+    private Timestamp time;
 
     public Transaction() {
     }
@@ -38,7 +37,8 @@ public class Transaction implements Serializable {
         this.type = type;
         this.accountId = accountId;
         this.summ = summ;
-        this.time = new Date(new Date().getTime());
+        long time = new Date().getTime();
+        this.time = new Timestamp(time);
     }
 
     public Transaction(Long accountId, Long targetAccountId, Integer summ) {
@@ -46,7 +46,8 @@ public class Transaction implements Serializable {
         this.accountId = accountId;
         this.targetAccountId = targetAccountId;
         this.summ = summ;
-        this.time = new Date(new Date().getTime());
+        long time = new Date().getTime();
+        this.time = new Timestamp(time);
     }
 
     public Long getId() {
@@ -65,7 +66,7 @@ public class Transaction implements Serializable {
         return summ;
     }
 
-    public Date getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
@@ -81,7 +82,7 @@ public class Transaction implements Serializable {
         this.summ = summ;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
