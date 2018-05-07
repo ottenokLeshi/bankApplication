@@ -3,10 +3,12 @@ package com.ottenokleshi.bankproject.controllers;
 import com.ottenokleshi.bankproject.models.entity.Client;
 import com.ottenokleshi.bankproject.services.ClientServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
@@ -20,7 +22,10 @@ public class ClientController {
      * Создание клиента из формы
      */
     @PostMapping("/client")
-    public RedirectView postClient(@ModelAttribute Client client) {
+    public RedirectView postClient(@Valid @ModelAttribute Client client, BindingResult result) {
+        if(result.hasErrors()) {
+            return new RedirectView("/");
+        }
         clientServiceImp.save(client);
         return new RedirectView("/");
     }
