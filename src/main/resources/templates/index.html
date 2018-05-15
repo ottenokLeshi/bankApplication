@@ -5,15 +5,26 @@
     <title>Title</title>
 </head>
 <body>
+    <script>
+        function onClick(id) {
+            fetch('/client/' + id, {
+                method: 'delete'
+            }).then(() => {
+                document.location.reload(true);
+            });
+        }
+    </script>
     <div th:include="/fragments/header.html"> content here </div>
     <table border="1">
         <tr>
             <td>client id</td>
             <td>name</td>
+            <td>delete</td>
         </tr>
         <tr th:each="client : ${clients}">
             <td th:text="${client.id}"></td>
             <td><a th:href="@{/client/{id}(id = ${client.id})}"><span th:text="${client.firstName}"></span> <span th:text="${client.lastName}"></span></a></td>
+            <td><button th:onclick="${'onClick(' + client.id + ');'}">Delete client</button></td>
         </tr>
     </table>
 

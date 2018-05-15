@@ -29,12 +29,17 @@ public class Client implements Serializable{
     @Column(name = "email")
     private String email;
 
+    @Column(name = "is_active")
+    private boolean isActive;
+
     public Client() {
+        this.isActive = true;
     }
 
     public Client(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.isActive = true;
     }
 
     public Long getId() {
@@ -64,6 +69,10 @@ public class Client implements Serializable{
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isActive() { return isActive; }
+
+    public void setActive(boolean active) { isActive = active; }
 
     @Override
     public String toString() {

@@ -2,7 +2,8 @@ CREATE TABLE client (
   id         SERIAL NOT NULL PRIMARY KEY,
   first_name VARCHAR,
   last_name  VARCHAR DEFAULT NULL,
-  email      VARCHAR DEFAULT NULL
+  email      VARCHAR DEFAULT NULL,
+  is_active  BOOLEAN
 );
 
 CREATE TABLE account (

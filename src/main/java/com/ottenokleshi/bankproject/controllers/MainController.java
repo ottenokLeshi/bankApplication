@@ -22,13 +22,13 @@ public class MainController {
      */
     @GetMapping("/")
     public ModelAndView index() {
-        Optional<Iterable<Client>> clients = Optional.of(clientRepository.findAll());
+        Optional<Iterable<Client>> clients = Optional.of(clientRepository.findActiveClients());
         Map<String, Object> map = new HashMap<>();
         if (clients.isPresent()) {
             map.put("clients", clients.get());
         }
-
-        map.put("client", new Client());
+        Client client = new Client();
+        map.put("client", client);
 
         return new ModelAndView("index", map);
     }

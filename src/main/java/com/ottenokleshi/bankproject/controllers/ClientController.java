@@ -39,4 +39,14 @@ public class ClientController {
 
         return new ModelAndView("client", map);
     }
+
+    /**
+     * Удалить клиента
+     */
+    @DeleteMapping("/client/{id}")
+    public RedirectView deleteClient(@PathVariable(name = "id") Long id) {
+        clientServiceImp.desactivateClient(id);
+
+        return new RedirectView("/");
+    }
 }

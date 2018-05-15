@@ -38,4 +38,10 @@ public class ClientServiceImp implements ClientService {
         map.put("transfer", TransactionType.TRANSFER);
         return map;
     }
+
+    public void desactivateClient(Long id) {
+        Client client = clientRepository.findById(id).get();
+        client.setActive(false);
+        clientRepository.save(client);
+    }
 }
