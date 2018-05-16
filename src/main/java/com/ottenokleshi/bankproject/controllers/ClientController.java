@@ -26,7 +26,11 @@ public class ClientController {
         if(result.hasErrors()) {
             return new RedirectView("/");
         }
-        clientServiceImp.save(client);
+        try {
+            clientServiceImp.save(client);
+        } catch (Exception e) {
+            System.out.println("ERROR: email must be unique: " + e.getMessage());
+        }
         return new RedirectView("/");
     }
 
